@@ -19,7 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\gamestates\GameStateManager.cpp" />
+    <ClCompile Include="src\gamestates\PlayState.cpp" />
+    <ClCompile Include="src\game\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\gamestates\gamestate.h" />
+    <ClInclude Include="src\gamestates\gamestatemanager.h" />
+    <ClInclude Include="src\gamestates\playstate.h" />
+    <ClInclude Include="src\game\defines.h" />
+    <ClInclude Include="src\game\game.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A792433B-9967-4046-BE24-B90742EF603B}</ProjectGuid>
