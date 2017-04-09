@@ -26,9 +26,9 @@ private:
 	int m_Width;
 	int m_Height;
 	int m_MaxFPS;
+
 	bool m_Fullscreen;
 	bool m_Resizeable;
-
 	
 	void setup();
 	void run();

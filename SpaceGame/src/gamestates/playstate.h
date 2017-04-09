@@ -2,13 +2,19 @@
 
 #include "gamestate.h"
 #include "../game/defines.h"
-
+#include "../entities/background.h"
 class PlayState : public GameState
 {
 public:
-	PlayState();
+	PlayState(sf::RenderWindow &window);
 	~PlayState();
 	void draw() override;
-	void update(sf::Int32 delta) override;
-	void handleEvent(sf::Event &event)override;
+	void update(float delta) override;
+	void handleEvent(sf::Event &event) override;
+
+private:
+	sf::RenderWindow &m_Window;
+	Background background;
+
+	
 };

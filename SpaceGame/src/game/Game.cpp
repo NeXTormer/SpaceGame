@@ -30,9 +30,9 @@ void Game::setup()
 	}
 	m_Window->setFramerateLimit(m_MaxFPS);
 
-	camera = sf::View(sf::Vector2f(0, 0), sf::Vector2f(m_Width, m_Height));
+	camera = sf::View(sf::Vector2f(500, 500), sf::Vector2f(m_Width, m_Height));
 
-	playstate = new PlayState();
+	playstate = new PlayState(*m_Window);
 	
 	m_Gamestatemanager.push(playstate);
 
@@ -42,6 +42,8 @@ void Game::setup()
 void Game::run()
 {
 	sf::Uint32 frames = 0;
+	float lastFrameTime = 0;
+
 	time.restart();
 	while (m_Window->isOpen())
 	{
@@ -65,13 +67,33 @@ void Game::run()
 						break;
 					}
 					break;
+				
 			}
 		}
 
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+		{
+			camera.move(sf::Vector2f(-10, 0));
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+		{
+			camera.move(sf::Vector2f(0, 10));
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		{
+			camera.move(sf::Vector2f(10, 0));
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+		{
+			camera.move(sf::Vector2f(0, -10));
+		}
+
+
 		m_Window->clear(m_Clearcolor);
 		m_Window->setView(camera);
-
-		m_Gamestatemanager.update(clock.getElapsedTime().asMilliseconds());
+		m_Gamestatemanager.update(lastFrameTime - (clock.getElapsedTime().asSeconds() * 10000));
+		lastFrameTime = clock.getElapsedTime().asSeconds() * 10000;
 		m_Gamestatemanager.draw();
 
 		m_Window->display();
@@ -83,7 +105,7 @@ void Game::run()
 			frames = 0;
 			time.restart();
 		}
-		
 		clock.restart();
+		
 	}
 }

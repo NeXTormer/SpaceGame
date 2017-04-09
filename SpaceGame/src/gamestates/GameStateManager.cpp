@@ -5,7 +5,7 @@ void GameStateManager::handleEvent(sf::Event &event)
 	m_Gamestates.top()->handleEvent(event);
 }
 
-void GameStateManager::update(sf::Int32 delta)
+void GameStateManager::update(float delta)
 {
 	m_Gamestates.top()->update(delta);
 }

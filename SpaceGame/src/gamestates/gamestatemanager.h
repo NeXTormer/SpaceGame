@@ -9,7 +9,7 @@ class GameStateManager
 {
 public:
 	void handleEvent(sf::Event &event);
-	void update(sf::Int32 delta);
+	void update(float delta);
 	void draw();
 
 	void push(GameState *gamestate);
